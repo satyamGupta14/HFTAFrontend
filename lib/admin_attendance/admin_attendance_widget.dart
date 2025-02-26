@@ -496,7 +496,7 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                                   Text(
                                                     getJsonField(
                                                       testItem,
-                                                      r'''$.data.username''',
+                                                      r'''$.data.Username''',
                                                     ).toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
