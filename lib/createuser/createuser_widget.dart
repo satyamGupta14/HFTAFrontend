@@ -58,14 +58,14 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
     _model.alertnativeContactNumberTextController ??= TextEditingController();
     _model.alertnativeContactNumberFocusNode ??= FocusNode();
 
-    _model.guardianNameTextController1 ??= TextEditingController();
-    _model.guardianNameFocusNode1 ??= FocusNode();
+    _model.guardianNamesTextController ??= TextEditingController();
+    _model.guardianNamesFocusNode ??= FocusNode();
 
     _model.addressTextController ??= TextEditingController();
     _model.addressFocusNode ??= FocusNode();
 
-    _model.guardianNameTextController2 ??= TextEditingController();
-    _model.guardianNameFocusNode2 ??= FocusNode();
+    _model.guardianNameTextController ??= TextEditingController();
+    _model.guardianNameFocusNode ??= FocusNode();
 
     _model.confirmPasswordTextController ??= TextEditingController();
     _model.confirmPasswordFocusNode ??= FocusNode();
@@ -697,8 +697,8 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          controller: _model.guardianNameTextController1,
-                          focusNode: _model.guardianNameFocusNode1,
+                          controller: _model.guardianNamesTextController,
+                          focusNode: _model.guardianNamesFocusNode,
                           autofocus: false,
                           autofillHints: [AutofillHints.familyName],
                           obscureText: false,
@@ -755,7 +755,7 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.guardianNameTextController1Validator
+                          validator: _model.guardianNamesTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -978,8 +978,8 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
                     children: [
                       Expanded(
                         child: TextFormField(
-                          controller: _model.guardianNameTextController2,
-                          focusNode: _model.guardianNameFocusNode2,
+                          controller: _model.guardianNameTextController,
+                          focusNode: _model.guardianNameFocusNode,
                           autofocus: false,
                           autofillHints: [AutofillHints.password],
                           obscureText: false,
@@ -1036,7 +1036,7 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           cursorColor: FlutterFlowTheme.of(context).primaryText,
-                          validator: _model.guardianNameTextController2Validator
+                          validator: _model.guardianNameTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -1188,12 +1188,12 @@ class _CreateuserWidgetState extends State<CreateuserWidget> {
                           contact: _model.contactNumberTextController.text,
                           alternativeContact: _model
                               .alertnativeContactNumberTextController.text,
-                          guardianName: _model.guardianNameTextController1.text,
+                          guardianName: _model.guardianNamesTextController.text,
                           address: _model.addressTextController.text,
                           gender: _model.genderValue,
                           dateOfJoining:
                               dateTimeFormat("d/M/y", _model.datePicked),
-                          password: _model.guardianNameTextController2.text,
+                          password: _model.guardianNameTextController.text,
                           role: _model.roleValue,
                           username: _model.usernameTextController.text,
                         );

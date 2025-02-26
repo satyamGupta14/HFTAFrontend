@@ -49,10 +49,10 @@ class CreateuserModel extends FlutterFlowModel<CreateuserWidget> {
   TextEditingController? alertnativeContactNumberTextController;
   String? Function(BuildContext, String?)?
       alertnativeContactNumberTextControllerValidator;
-  // State field(s) for GuardianName widget.
-  FocusNode? guardianNameFocusNode1;
-  TextEditingController? guardianNameTextController1;
-  String? Function(BuildContext, String?)? guardianNameTextController1Validator;
+  // State field(s) for GuardianNames widget.
+  FocusNode? guardianNamesFocusNode;
+  TextEditingController? guardianNamesTextController;
+  String? Function(BuildContext, String?)? guardianNamesTextControllerValidator;
   // State field(s) for Address widget.
   FocusNode? addressFocusNode;
   TextEditingController? addressTextController;
@@ -62,9 +62,9 @@ class CreateuserModel extends FlutterFlowModel<CreateuserWidget> {
   FormFieldController<String>? genderValueController;
   DateTime? datePicked;
   // State field(s) for GuardianName widget.
-  FocusNode? guardianNameFocusNode2;
-  TextEditingController? guardianNameTextController2;
-  String? Function(BuildContext, String?)? guardianNameTextController2Validator;
+  FocusNode? guardianNameFocusNode;
+  TextEditingController? guardianNameTextController;
+  String? Function(BuildContext, String?)? guardianNameTextControllerValidator;
   // State field(s) for ConfirmPassword widget.
   FocusNode? confirmPasswordFocusNode;
   TextEditingController? confirmPasswordTextController;
@@ -108,14 +108,14 @@ class CreateuserModel extends FlutterFlowModel<CreateuserWidget> {
     alertnativeContactNumberFocusNode?.dispose();
     alertnativeContactNumberTextController?.dispose();
 
-    guardianNameFocusNode1?.dispose();
-    guardianNameTextController1?.dispose();
+    guardianNamesFocusNode?.dispose();
+    guardianNamesTextController?.dispose();
 
     addressFocusNode?.dispose();
     addressTextController?.dispose();
 
-    guardianNameFocusNode2?.dispose();
-    guardianNameTextController2?.dispose();
+    guardianNameFocusNode?.dispose();
+    guardianNameTextController?.dispose();
 
     confirmPasswordFocusNode?.dispose();
     confirmPasswordTextController?.dispose();
