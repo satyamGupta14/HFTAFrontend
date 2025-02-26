@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'admin_attendance_model.dart';
@@ -30,34 +29,6 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AdminAttendanceModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResult3sb = await DetailsGroup.getAttendancesCall.call();
-
-      if ((_model.apiResult3sb?.succeeded ?? true)) {
-        var confirmDialogResponse = await showDialog<bool>(
-              context: context,
-              builder: (alertDialogContext) {
-                return AlertDialog(
-                  title: Text('Message'),
-                  content: Text('Success'),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, false),
-                      child: Text('Cancel'),
-                    ),
-                    TextButton(
-                      onPressed: () => Navigator.pop(alertDialogContext, true),
-                      child: Text('Confirm'),
-                    ),
-                  ],
-                );
-              },
-            ) ??
-            false;
-      }
-    });
   }
 
   @override
@@ -471,89 +442,127 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 children: [
-                                  Builder(
-                                    builder: (context) {
-                                      final test = getJsonField(
-                                        (_model.apiResult3sb?.jsonBody ?? ''),
-                                        r'''$.data''',
-                                      ).toList();
+                                  FutureBuilder<ApiCallResponse>(
+                                    future:
+                                        DetailsGroup.getAttendancesCall.call(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final columnGetAttendancesResponse =
+                                          snapshot.data!;
 
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: List.generate(test.length,
-                                            (testIndex) {
-                                          final testItem = test[testIndex];
-                                          return Row(
+                                      return Builder(
+                                        builder: (context) {
+                                          final test = getJsonField(
+                                            columnGetAttendancesResponse
+                                                .jsonBody,
+                                            r'''$.data''',
+                                          ).toList();
+
+                                          return Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Column(
+                                            children: List.generate(test.length,
+                                                (testIndex) {
+                                              final testItem = test[testIndex];
+                                              return Row(
                                                 mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  Text(
-                                                    getJsonField(
-                                                      testItem,
-                                                      r'''$.data.Username''',
-                                                    ).toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                  Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        getJsonField(
+                                                          testItem,
+                                                          r'''$.data.Username''',
+                                                        ).toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                      Text(
+                                                        getJsonField(
+                                                          testItem,
+                                                          r'''$.data.Days''',
+                                                        ).toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                      Text(
+                                                        getJsonField(
+                                                          testItem,
+                                                          r'''$.data.Loaction''',
+                                                        ).toString(),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryText,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ],
                                                   ),
-                                                  Text(
-                                                    getJsonField(
-                                                      testItem,
-                                                      r'''$.data.Days''',
-                                                    ).toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                  ),
-                                                  Text(
-                                                    getJsonField(
-                                                      testItem,
-                                                      r'''$.data.Loaction''',
-                                                    ).toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodySmall
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryText,
-                                                          letterSpacing: 0.0,
-                                                        ),
+                                                  Icon(
+                                                    Icons.star_rate,
+                                                    color: FFAppState()
+                                                                .AttendanceStatus ==
+                                                            '1'
+                                                        ? Color(0xFF54E36A)
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    size: 24.0,
                                                   ),
                                                 ],
-                                              ),
-                                              Icon(
-                                                Icons.star_rate,
-                                                color: FFAppState()
-                                                            .AttendanceStatus ==
-                                                        '1'
-                                                    ? Color(0xFF54E36A)
-                                                    : FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                size: 24.0,
-                                              ),
-                                            ],
+                                              );
+                                            }).divide(SizedBox(height: 16.0)),
                                           );
-                                        }).divide(SizedBox(height: 16.0)),
+                                        },
                                       );
                                     },
                                   ),
