@@ -466,96 +466,197 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                 thickness: 1.0,
                                 color: FlutterFlowTheme.of(context).alternate,
                               ),
-                              Builder(
-                                builder: (context) {
-                                  final tests = getJsonField(
-                                    (_model.apiResult3sb?.jsonBody ?? ''),
-                                    r'''$.data''',
-                                  ).toList();
-
-                                  return ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: tests.length,
-                                    itemBuilder: (context, testsIndex) {
-                                      final testsItem = tests[testsIndex];
-                                      return Builder(
-                                        builder: (context) {
-                                          final test = getJsonField(
-                                            (_model.apiResult3sb?.jsonBody ??
-                                                ''),
-                                            r'''$.data''',
-                                          ).toList();
-
-                                          return Column(
+                              ListView(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                children: [
+                                  Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
                                             mainAxisSize: MainAxisSize.max,
-                                            children: List.generate(test.length,
-                                                (testIndex) {
-                                              final testItem = test[testIndex];
-                                              return Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Builder(
-                                                    builder: (context) {
-                                                      final test2 =
-                                                          getJsonField(
-                                                        (_model.apiResult3sb
-                                                                ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.data''',
-                                                      ).toList();
-
-                                                      return Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: List.generate(
-                                                            test2.length,
-                                                            (test2Index) {
-                                                          final test2Item =
-                                                              test2[test2Index];
-                                                          return Text(
-                                                            'Satyam Gupta',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyLarge
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                          );
-                                                        }),
-                                                      );
-                                                    },
-                                                  ),
-                                                  Icon(
-                                                    Icons.star_rate,
-                                                    color: FFAppState()
-                                                                .AttendanceStatus ==
-                                                            '1'
-                                                        ? Color(0xFF54E36A)
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    size: 24.0,
-                                                  ),
-                                                ],
-                                              );
-                                            }).divide(SizedBox(height: 16.0)),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                },
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Satyam Gupta',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'June 15, 2023',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                '5:00 PM - 6:30 PM',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Icon(
+                                            Icons.star_rate,
+                                            color: FFAppState()
+                                                        .AttendanceStatus ==
+                                                    '1'
+                                                ? Color(0xFF54E36A)
+                                                : FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            size: 24.0,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Yash Jadav ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'June 14, 2023',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                '6:00 AM - 7:30 AM',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            color: FFAppState()
+                                                        .AttendanceStatus ==
+                                                    '1'
+                                                ? Color(0xFF54E36A)
+                                                : FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            size: 24.0,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                'Ashish Chipte',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyLarge
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                'June 13, 2023',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                              Text(
+                                                '5:00 PM - 6:30 PM',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryText,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                              ),
+                                            ],
+                                          ),
+                                          Icon(
+                                            Icons.star,
+                                            color: FFAppState()
+                                                        .AttendanceStatus ==
+                                                    '1'
+                                                ? Color(0xFF54E36A)
+                                                : FlutterFlowTheme.of(context)
+                                                    .primary,
+                                            size: 24.0,
+                                          ),
+                                        ],
+                                      ),
+                                    ].divide(SizedBox(height: 16.0)),
+                                  ),
+                                ],
                               ),
                             ].divide(SizedBox(height: 12.0)),
                           ),
