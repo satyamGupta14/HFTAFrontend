@@ -99,7 +99,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           15.0, 15.0, 15.0, 15.0),
                       child: SingleChildScrollView(
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Align(
                               alignment: AlignmentDirectional(-1.0, 0.0),

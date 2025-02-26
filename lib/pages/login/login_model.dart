@@ -17,17 +17,35 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   FocusNode? userNameFocusNode;
   TextEditingController? userNameTextController;
   String? Function(BuildContext, String?)? userNameTextControllerValidator;
+  String? _userNameTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'User Name is required';
+    }
+
+    return null;
+  }
+
   // State field(s) for Password widget.
   FocusNode? passwordFocusNode;
   TextEditingController? passwordTextController;
   late bool passwordVisibility;
   String? Function(BuildContext, String?)? passwordTextControllerValidator;
+  String? _passwordTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Password is required';
+    }
+
+    return null;
+  }
+
   // Stores action output result for [Backend Call - API (login)] action in Button widget.
   ApiCallResponse? apiResult13x;
 
   @override
   void initState(BuildContext context) {
+    userNameTextControllerValidator = _userNameTextControllerValidator;
     passwordVisibility = false;
+    passwordTextControllerValidator = _passwordTextControllerValidator;
   }
 
   @override
