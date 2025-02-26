@@ -494,7 +494,7 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                                       Text(
                                                         getJsonField(
                                                           testItem,
-                                                          r'''$.data.Username''',
+                                                          r'''$.data[0].Username''',
                                                         ).toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -510,7 +510,7 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                                       Text(
                                                         getJsonField(
                                                           testItem,
-                                                          r'''$.data.Days''',
+                                                          r'''$.data[0].Days''',
                                                         ).toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
@@ -529,7 +529,7 @@ class _AdminAttendanceWidgetState extends State<AdminAttendanceWidget> {
                                                       Text(
                                                         getJsonField(
                                                           testItem,
-                                                          r'''$.data.Loaction''',
+                                                          r'''$.data[0].Loaction''',
                                                         ).toString(),
                                                         style:
                                                             FlutterFlowTheme.of(
